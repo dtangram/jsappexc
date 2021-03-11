@@ -18,14 +18,15 @@ const App = () => {
   };
 
   const chromeBrowser = navigator.userAgent.indexOf('Chrome') !== -1;
+  // const chromeBrowser = !!window.chrome;
   const safariBrowser = navigator.userAgent.indexOf('Safari') !== -1;
 
   return (
     <div className="App-header">
-      {safariBrowser && (
+      {!chromeBrowser ? (
         <React.Fragment>
-          <img src={logo} alt="logo" className="imgSafari" />
-          <video controls autoPlay muted className="videoSafari">
+          <img src={logo} alt="logo" />
+          <video controls autoPlay muted>
             <source
               src={`../${setBCKValue}.${setBCKType}`}
               type={`video/${setBCKType}`}
@@ -33,15 +34,13 @@ const App = () => {
               Your browser does not support the video tag.
           </video>
 
-          <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} className="imgSafari" />
+          <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} />
         </React.Fragment>
-      )}
-
-      {chromeBrowser && (
+      ) : (
         <React.Fragment>
           <img src={logo} alt="logo" className="logo" />
           {setBCKType === "mp4" ? (
-            <video controls autoPlay muted className={"imgVid" + (setBCKValue ? "isActive" : "hide")}>
+            <video controls autoPlay muted className={"imgVid " + (setBCKValue ? "isActive" : "hide")}>
               <source
                 src={`../${setBCKValue}.${setBCKType}`}
                 type={`video/${setBCKType}`}
@@ -51,7 +50,7 @@ const App = () => {
           )
           :
           (
-            <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} className={"imgVid" + (setBCKValue ? "isActive" : "hide")} />
+            <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} className={"imgVid " + (setBCKValue ? "isActive" : "hide")} />
           )}
         </React.Fragment>
       )}

@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-.imgSafari, .videoSafari {
+.App-header > img, .App-header > video {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
