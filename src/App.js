@@ -17,18 +17,45 @@ const App = () => {
     bckType(event.type);
   };
 
+  const chromeBrowser = navigator.userAgent.indexOf('Chrome') !== -1;
+  const safariBrowser = navigator.userAgent.indexOf('Safari') !== -1;
+
   return (
     <div className="App-header">
-      <img src={logo} alt="logo" />
-      <video controls autoPlay muted>
-        <source
-          src={`../${setBCKValue}.${setBCKType}`}
-          type={`video/${setBCKType}`}
-        />
-          Your browser does not support the video tag.
-      </video>
+      {safariBrowser && (
+        <React.Fragment>
+          <img src={logo} alt="logo" className="imgSafari" />
+          <video controls autoPlay muted className="videoSafari">
+            <source
+              src={`../${setBCKValue}.${setBCKType}`}
+              type={`video/${setBCKType}`}
+            />
+              Your browser does not support the video tag.
+          </video>
 
-      <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} />
+          <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} className="imgSafari" />
+        </React.Fragment>
+      )}
+
+      {chromeBrowser && (
+        <React.Fragment>
+          <img src={logo} alt="logo" className="logo" />
+          {setBCKType === "mp4" ? (
+            <video controls autoPlay muted className={"imgVid" + (setBCKValue ? "isActive" : "hide")}>
+              <source
+                src={`../${setBCKValue}.${setBCKType}`}
+                type={`video/${setBCKType}`}
+              />
+                Your browser does not support the video tag.
+            </video>
+          )
+          :
+          (
+            <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} className={"imgVid" + (setBCKValue ? "isActive" : "hide")} />
+          )}
+        </React.Fragment>
+      )}
+
       <Select
         name="select-bg"
         id="select-bg"
@@ -36,6 +63,27 @@ const App = () => {
         options={back}
         onChange={handleSelectChange}
       />
+
+      {
+        //   <img src={logo} alt="logo" className="logo" />
+        //   <video controls autoPlay muted className={"imgVid " + (setBCKValue ? "isActive" : "")}>
+        //     <source
+        //       src={`../${setBCKValue}.${setBCKType}`}
+        //       type={`video/${setBCKType}`}
+        //       className="isActive"
+        //     />
+        //       Your browser does not support the video tag.
+        //   </video>
+        //
+        //   <img src={`../${setBCKValue}.${setBCKType}`} alt={back.value} className={"imgVid " + (setBCKType === "mp4" ? "hide" : "isActive")} />
+        //   <Select
+        //     name="select-bg"
+        //     id="select-bg"
+        //     placeholder="--Please choose an option--"
+        //     options={back}
+        //     onChange={handleSelectChange}
+        //   />
+      }
     </div>
   );
 }

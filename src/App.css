@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-.App-header > img, .App-header > video {
+.imgSafari, .videoSafari {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
@@ -19,8 +19,38 @@
   object-position: center center;
 }
 
-.App-header > .isActive {
+/* .App-header > .isActive {
   z-index: -1;
+} */
+
+.imgVid, .logo {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  object-fit: cover;
+  object-position: center center;
+}
+
+img.logo {
+  opacity: 1;
+  z-index: -1;
+}
+
+.imgVid {
+  opacity: 0;
+  z-index: -2;
+}
+
+.App-header > .isActive {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hide{
+  display: none;
 }
 
 #select-bg {
@@ -33,3 +63,55 @@
   width: 350px;
   z-index: 1;
 }
+
+
+/* .App-header {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.imgVid, .logo {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  object-fit: cover;
+  object-position: center center;
+}
+
+img.logo {
+  opacity: 1;
+  z-index: -1;
+}
+
+.imgVid {
+  opacity: 0;
+  z-index: -2;
+}
+
+.App-header > .isActive {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hide{
+  display: none;
+}
+
+#select-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  padding-left: 3%;
+  padding-right: 3%;
+  width: 350px;
+  z-index: 2;
+}
+ */
